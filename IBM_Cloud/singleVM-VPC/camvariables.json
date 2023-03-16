@@ -144,8 +144,21 @@
       {
         "name": "public_ssh_key",
         "label": "Public SSH key",
-        "description": "Public SSH key to be set in the virtual server instance.",
+        "description": "Public SSH key to be created and set in the virtual server instance.",
         "type": "string",
+        "default": "",
+        "required": false,
+        "secured": false,
+        "hidden": false,
+        "immutable": false,
+        "immutable_after_create": false
+      },
+      {
+        "name": "ssh_name",
+        "label": "Existing Public SSH key",
+        "description": "An existing Public SSH key to be set in the virtual server instance.",
+        "type": "string",
+        "default": "",
         "required": true,
         "secured": false,
         "hidden": false,

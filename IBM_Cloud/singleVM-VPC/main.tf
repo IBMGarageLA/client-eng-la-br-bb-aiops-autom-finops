@@ -54,11 +54,11 @@ data "ibm_is_ssh_key" "cam_sshkey" {
 }
 
 #Create SSHKey
-#resource "ibm_is_ssh_key" "cam_sshkey" {
-#  count = var.public_ssh_key !=""?1:0 
-#  name       = var.ssh_name
-#  public_key = var.public_ssh_key
-#}
+resource "ibm_is_ssh_key" "cam_sshkey" {
+  count = var.public_ssh_key !=""?1:0 
+  name       = var.ssh_name
+  public_key = var.public_ssh_key
+}
 
 #Create VSI
 resource "ibm_is_instance" "cam-server" {
@@ -74,7 +74,7 @@ resource "ibm_is_instance" "cam-server" {
 
   vpc  = ibm_is_vpc.cam_vpc.id
   zone = var.zone
-  keys = [ibm_is_ssh_key.cam_sshkey[count.index].id]
+  keys = var.public_ssh_key!=""?[ibm_is_ssh_key.cam_sshkey[count.index].id]:[data.ibm_is_ssh_key.cam_sshkey[count.index].id]
   tags = module.camtags.tagslist
 }
 

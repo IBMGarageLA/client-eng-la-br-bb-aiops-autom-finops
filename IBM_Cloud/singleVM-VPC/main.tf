@@ -48,9 +48,15 @@ resource "ibm_is_subnet" "cam_subnet" {
   total_ipv4_address_count = 8
 }
 
+data "ibm_is_ssh_key" "cam_sshkey" {
+  count = var.ssh_name !=""?1:0 
+  name = var.ssh_name
+}
+
 #Create SSHKey
 resource "ibm_is_ssh_key" "cam_sshkey" {
-  name       = "${var.resource_prefix}-ssh-${random_integer.key.result}"
+  count = var.public_ssh_key !=""?1:0 
+  name       = var.ssh_name
   public_key = var.public_ssh_key
 }
 

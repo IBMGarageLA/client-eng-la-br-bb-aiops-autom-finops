@@ -5,6 +5,7 @@ variable "region" {
 
 variable "public_ssh_key" {
   type = string
+  default = ""
 }
 
 variable "image_name" {
@@ -25,4 +26,8 @@ variable "zone" {
 variable "resource_prefix" {
   type    = string
   default = "cam"
+}
+variable "ssh_name" {
+  type    = string
+  default = ""
 }

@@ -62,6 +62,7 @@ resource "ibm_is_ssh_key" "cam_sshkey" {
 
 #Create VSI
 resource "ibm_is_instance" "cam-server" {
+  count = 1
   name    = "${var.resource_prefix}-server-vsi-${random_integer.key.result}"
   image   = data.ibm_is_image.ds_image.id
   profile = var.profile
@@ -79,6 +80,7 @@ resource "ibm_is_instance" "cam-server" {
 
 ## Attach floating IP address to VSI
 resource "ibm_is_floating_ip" "cam_floatingip" {
+  count = 1
   name   = "${var.resource_prefix}-fip-${random_integer.key.result}"
-  target = ibm_is_instance.cam-server.primary_network_interface[0].id
+  target = ibm_is_instance.cam-server[count.index].primary_network_interface[0].id
 }

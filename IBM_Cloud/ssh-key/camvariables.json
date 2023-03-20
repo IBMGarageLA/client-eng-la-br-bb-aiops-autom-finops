@@ -1,0 +1,52 @@
+{
+    "terraform_version": ">= 0.13.0",
+    "template_input_params": [      
+    
+      {
+        "name": "region",
+        "label": "Region",
+        "description": "IBM Cloud region to create your ssh key.",
+        "type": "string",
+        "required": true,
+        "secured": false,
+        "hidden": false,
+        "immutable": false,
+        "immutable_after_create": false
+      },
+      {
+        "name": "public_ssh_key",
+        "label": "Public SSH key",
+        "description": "Public SSH key to be created and set in the virtual server instance.",
+        "type": "string",
+        "default": "",
+        "required": false,
+        "secured": false,
+        "hidden": false,
+        "immutable": false,
+        "immutable_after_create": false
+      },
+      {
+        "name": "ssh_name",
+        "label": "Existing Public SSH key",
+        "description": "An existing Public SSH key to be set in the virtual server instance.",
+        "type": "string",
+        "default": "",
+        "required": true,
+        "secured": false,
+        "hidden": false,
+        "immutable": false,
+        "immutable_after_create": false
+      }
+    ],
+    "template_output_params": [
+      {
+        "name": "ssh_key_id",
+        "label": "SSH Key ID",
+        "description": "",
+        "secured": false,
+        "hidden": false,
+        "shortname": "",
+        "type": "string"
+      }
+    ]
+  }

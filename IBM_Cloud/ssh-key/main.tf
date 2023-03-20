@@ -8,7 +8,7 @@ module "camtags" {
 
 #Find SSHKey
 data "ibm_is_ssh_key" "cam_sshkey" {
-  count = var.ssh_name !=""?1:0 
+  count = var.public_ssh_key ==""?1:0 
   name = var.ssh_name
 }
 

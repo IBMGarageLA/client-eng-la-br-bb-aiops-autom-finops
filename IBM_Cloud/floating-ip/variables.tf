@@ -7,3 +7,8 @@ variable "vsi_id" {
   type = string
   default = ""
 }
+
+variable "floatingip_name" {
+  type = string
+  default = ""
+}

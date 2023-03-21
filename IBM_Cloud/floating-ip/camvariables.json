@@ -14,9 +14,9 @@
         "immutable_after_create": false
       },
       {
-        "name": "public_ssh_key",
-        "label": "Public SSH key",
-        "description": "Public SSH key to be created and set in the virtual server instance.",
+        "name": "vsi_id",
+        "label": "VSI interface ID",
+        "description": "VSI interface ID to attach new floating IP.",
         "type": "string",
         "default": "",
         "required": false,
@@ -26,27 +26,16 @@
         "immutable_after_create": false
       },
       {
-        "name": "ssh_name",
-        "label": "Existing Public SSH key",
-        "description": "An existing Public SSH key to be set in the virtual server instance.",
+        "name": "floatingip_name",
+        "label": "Floating IP Name",
+        "description": "Floating IP Resource Name.",
         "type": "string",
         "default": "",
-        "required": true,
+        "required": false,
         "secured": false,
         "hidden": false,
         "immutable": false,
         "immutable_after_create": false
-      }
-    ],
-    "template_output_params": [
-      {
-        "name": "ssh_key_id",
-        "label": "SSH Key ID",
-        "description": "",
-        "secured": false,
-        "hidden": false,
-        "shortname": "",
-        "type": "string"
       }
     ]
   }

@@ -47,6 +47,15 @@
         "hidden": false,
         "shortname": "",
         "type": "string"
+      },
+      {
+        "name": "ssh_key_name",
+        "label": "SSH Key Name",
+        "description": "",
+        "secured": false,
+        "hidden": false,
+        "shortname": "",
+        "type": "string"
       }
     ]
   }

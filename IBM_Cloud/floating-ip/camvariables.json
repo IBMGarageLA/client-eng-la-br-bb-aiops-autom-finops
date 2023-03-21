@@ -37,5 +37,25 @@
         "immutable": false,
         "immutable_after_create": false
       }
+    ],
+    "template_output_params": [
+      {
+        "name": "floating_IP_address",
+        "label": "Virtual Server Instance Floating IP address",
+        "description": "",
+        "secured": false,
+        "hidden": false,
+        "shortname": "",
+        "type": "string"
+      },
+      {
+        "name": "floating_IP_status",
+        "label": "Virtual Server Instance Private IP Status",
+        "description": "",
+        "secured": false,
+        "hidden": false,
+        "shortname": "",
+        "type": "string"
+      }
     ]
   }

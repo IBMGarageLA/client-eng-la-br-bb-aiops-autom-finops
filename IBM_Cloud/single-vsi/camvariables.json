@@ -1,0 +1,115 @@
+{
+    "terraform_version": ">= 0.13.0",
+    "template_input_params": [
+      {
+        "name": "resource_prefix",
+        "label": "Instance Name Prefix",
+        "description": "The name to be prefixed to the VPC Server Instance and all the related resources like VPC, Subnet that will be created by this template.",
+        "type": "string",
+        "default": "cam",
+        "required": true,
+        "secured": false,
+        "hidden": false,
+        "immutable": false,
+        "immutable_after_create": false,
+        "regex": "^([a-z]|[a-z]([-a-z0-9]){0,18}([a-z0-9]))$",
+        "regexdesc": "Use lowercase alphanumeric characters and hyphens only. Must begin with a lower case alphabetic character and end with lowercase alphanumeric character. Maximum length is 20 characters."
+      },      
+      {
+        "name": "image_name",
+        "label": "OS Image Name",
+        "description": "The name of the IBM Cloud OS image from which the Virtual Servers for Virtual Private Cloud will be created. See IBM Cloud documentation for more details on valid values for this attribute.",
+        "type": "string",
+        "default": "ibm-debian-9-0-64-minimal-for-vsi",
+        "required": true,
+        "secured": false,
+        "hidden": false,
+        "immutable": false,
+        "immutable_after_create": false
+      },
+      {
+        "name": "profile",
+        "label": "Virtual Server Instance Profile",
+        "description": "IBM Cloud virtual server profile to be applied to your virtual server. A profile is a combination of instance attributes, such as the number of vCPUs, amount of RAM, and more that can be used to start a virtual server instance. See IBM Cloud documentation for more details on valid values for this attribute.",
+        "type": "string",
+        "default": "bx2-2x8",
+        "required": true,
+        "secured": false,
+        "hidden": false,
+        "immutable": false,
+        "immutable_after_create": false
+      },
+      {
+        "name": "region",
+        "label": "Region",
+        "description": "IBM Cloud region to create your virtual server instance in.",
+        "type": "string",
+        "required": true,
+        "secured": false,
+        "hidden": false,
+        "immutable": false,
+        "immutable_after_create": false
+      },
+      {
+        "name": "zone",
+        "label": "Availability Zone (Must match the region selected)",
+        "description": "IBM Cloud availability Zone to create your virtual server instance in. The zone value must be in the selected region.",
+        "type": "string",
+        "required": true,
+        "secured": false,
+        "hidden": false,
+        "immutable": false,
+        "immutable_after_create": false
+      },
+      {
+        "name": "ssh_name",
+        "label": "Existing Public SSH key",
+        "description": "An existing Public SSH key to be set in the virtual server instance.",
+        "type": "string",
+        "default": "",
+        "required": true,
+        "secured": false,
+        "hidden": false,
+        "immutable": false,
+        "immutable_after_create": false
+      }
+    ],
+    "template_output_params": [
+      {
+        "name": "server_interface_id",
+        "label": "Virtual Server Instance Interface ID",
+        "description": "",
+        "secured": false,
+        "hidden": false,
+        "shortname": "",
+        "type": "string"
+      },
+      {
+        "name": "server_private_ip_address",
+        "label": "Virtual Server Instance Private IP address",
+        "description": "",
+        "secured": false,
+        "hidden": false,
+        "shortname": "",
+        "type": "string"
+      },
+      {
+        "name": "server_name",
+        "label": "Virtual Server Instance Name",
+        "description": "",
+        "secured": false,
+        "hidden": false,
+        "shortname": "",
+        "type": "string"
+      },
+      {
+        "name": "server_profile",
+        "label": "Virtual Server Instance Profile",
+        "description": "",
+        "secured": false,
+        "hidden": false,
+        "shortname": "",
+        "type": "string"
+      }
+    ]
+  }

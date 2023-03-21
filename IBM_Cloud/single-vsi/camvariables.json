@@ -72,6 +72,18 @@
         "hidden": false,
         "immutable": false,
         "immutable_after_create": false
+      },
+      {
+        "name": "tags",
+        "label": "Tags from CAM",
+        "description": "Tags from CAM",
+        "type": "map",
+        "default": "",
+        "required": true,
+        "secured": false,
+        "hidden": false,
+        "immutable": false,
+        "immutable_after_create": false
       }
     ],
     "template_output_params": [
@@ -110,6 +122,24 @@
         "hidden": false,
         "shortname": "",
         "type": "string"
+      },
+      {
+        "name": "server_tags",
+        "label": "Tags from Terraform",
+        "description": "",
+        "secured": false,
+        "hidden": false,
+        "shortname": "",
+        "type": "list"
+      },
+      {
+        "name": "cam_tags",
+        "label": "Tags from CAM",
+        "description": "",
+        "secured": false,
+        "hidden": false,
+        "shortname": "",
+        "type": "map"
       }
     ]
   }

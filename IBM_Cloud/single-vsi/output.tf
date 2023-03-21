@@ -15,3 +15,11 @@ output "server_name" {
 output "server_profile" {
   value = ibm_is_instance.cam-server.profile
 }
+
+output "server_tags" {
+  value = module.camtags.tagslist
+}
+
+output "cam_tags" {
+  value = var.tags
+}

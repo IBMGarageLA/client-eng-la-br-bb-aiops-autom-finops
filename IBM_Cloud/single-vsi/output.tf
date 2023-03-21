@@ -17,5 +17,5 @@ output "server_profile" {
 }
 
 output "cam_tags" {
-  value = module.camtags.tags
+  value = module.camtags.tagslist
 }

@@ -29,4 +29,5 @@ variable "ssh_name" {
 
 variable "tags" {
   type    = map
+  default = {}
 }

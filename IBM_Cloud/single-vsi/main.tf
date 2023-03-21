@@ -65,6 +65,6 @@ resource "ibm_is_instance" "cam-server" {
 
   vpc  = ibm_is_vpc.cam_vpc.id
   zone = var.zone
-  keys = data.ibm_is_ssh_key.cam_sshkey.id
+  keys = [data.ibm_is_ssh_key.cam_sshkey.id]
   tags = module.camtags.tagslist
 }

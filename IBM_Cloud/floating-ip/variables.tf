@@ -3,13 +3,7 @@ variable "region" {
   default = "us-east"
 }
 
-variable "public_ssh_key" {
+variable "vsi_id" {
   type = string
-  default = ""
-}
-
-
-variable "ssh_name" {
-  type    = string
   default = ""
 }

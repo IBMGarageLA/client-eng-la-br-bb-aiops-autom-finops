@@ -175,7 +175,7 @@ resource "azurerm_virtual_machine" "vm" {
   location              = var.azure_region
   resource_group_name   = azurerm_resource_group.default.name
   network_interface_ids = [azurerm_network_interface.vm.id]
-  vm_size               = "Standard_A2"
+  vm_size               = "Standard_A2_v2"
 
   storage_image_reference {
     publisher = "Canonical"

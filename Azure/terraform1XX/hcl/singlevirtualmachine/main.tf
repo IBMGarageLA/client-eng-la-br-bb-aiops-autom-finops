@@ -56,6 +56,16 @@ variable "user_public_key" {
   description = "Public SSH key used to connect to the virtual machine"
 }
 
+variable "vm_size" {
+  description = "VM Profile Size"
+
+}
+
+variable "resource_group" {
+  description = "Resource Group Name"
+  
+}
+
 #########################################################
 # Deploy the network resources
 #########################################################
@@ -73,7 +83,7 @@ resource "azurerm_virtual_network" "default" {
   name                = "${var.name_prefix}-${random_id.default.hex}-vnet"
   address_space       = ["10.0.0.0/16"]
   location            = var.azure_region
-  resource_group_name = azurerm_resource_group.default.name
+  resource_group_name = var.resource_group
 
   tags = {
     environment = "Terraform Basic VM"
@@ -82,7 +92,7 @@ resource "azurerm_virtual_network" "default" {
 
 resource "azurerm_subnet" "vm" {
   name                 = "${var.name_prefix}-subnet-${random_id.default.hex}-vm"
-  resource_group_name  = azurerm_resource_group.default.name
+  resource_group_name  = var.resource_group
   virtual_network_name = azurerm_virtual_network.default.name
   address_prefixes     = ["10.0.1.0/24"]
 }
@@ -90,7 +100,7 @@ resource "azurerm_subnet" "vm" {
 resource "azurerm_public_ip" "vm" {
   name                = "${var.name_prefix}-${random_id.default.hex}-vm-pip"
   location            = var.azure_region
-  resource_group_name = azurerm_resource_group.default.name
+  resource_group_name = var.resource_group
   allocation_method   = "Static"
   tags                = module.camtags.tagsmap
 }
@@ -99,7 +109,7 @@ resource "azurerm_network_security_group" "vm" {
   depends_on		  = [azurerm_network_interface.vm]
   name                = "${var.name_prefix}-${random_id.default.hex}-vm-nsg"
   location            = var.azure_region
-  resource_group_name = azurerm_resource_group.default.name
+  resource_group_name = var.resource_group
   tags                = module.camtags.tagsmap
 
   security_rule {
@@ -130,7 +140,7 @@ resource "azurerm_network_security_group" "vm" {
 resource "azurerm_network_interface" "vm" {
   name                = "${var.name_prefix}-${random_id.default.hex}-vm-nic1"
   location            = var.azure_region
-  resource_group_name = azurerm_resource_group.default.name
+  resource_group_name = var.resource_group
 
   ip_configuration {
     name                          = "${var.name_prefix}-${random_id.default.hex}-vm-nic1-ipc"
@@ -152,7 +162,7 @@ resource "azurerm_network_interface_security_group_association" "vm" {
 #########################################################
 resource "azurerm_storage_account" "default" {
   name                     = format("st%s", random_id.default.hex)
-  resource_group_name      = azurerm_resource_group.default.name
+  resource_group_name      = var.resource_group
   location                 = var.azure_region
   account_tier             = "Standard"
   account_replication_type = "LRS"
@@ -173,9 +183,9 @@ resource "azurerm_virtual_machine" "vm" {
   depends_on			      = [azurerm_network_interface_security_group_association.vm]
   name                  = "${var.name_prefix}-vm"
   location              = var.azure_region
-  resource_group_name   = azurerm_resource_group.default.name
+  resource_group_name   = var.resource_group
   network_interface_ids = [azurerm_network_interface.vm.id]
-  vm_size               = "Standard_A2_v2"
+  vm_size               = var.vm_size
 
   storage_image_reference {
     publisher = "Canonical"

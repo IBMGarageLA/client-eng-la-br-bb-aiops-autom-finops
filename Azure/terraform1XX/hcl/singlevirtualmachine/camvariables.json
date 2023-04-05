@@ -103,6 +103,26 @@
             "secured": false,
             "type": "string",
             "regex": "^ssh-rsa AAAA[0-9A-Za-z+/]+[=]{0,3}( [^@]+@[^@]+| [^@]+){0,1}$"
+        },
+        {
+            "name": "resource_group",
+            "label": "Resource Group",
+            "description": "",
+            "hidden": false,
+            "immutable": false,
+            "required": true,
+            "secured": false,
+            "type": "string"
+        },
+        {
+            "name": "vm_size",
+            "label": "VM Size",
+            "description": "",
+            "hidden": false,
+            "immutable": false,
+            "required": true,
+            "secured": false,
+            "type": "string"
         }
     ],
     "template_output_params": [
